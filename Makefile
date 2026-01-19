@@ -1,6 +1,4 @@
-SRCS = \
-	main.c \
-	
+SRCS = main.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -18,14 +16,15 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g3
 
-all:     ${NAME}
-${NAME}: ${LIBFT} ${GNL} ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${GNL} -o ${NAME}
+all: ${NAME}
 
-${LIBFT}:				
+${NAME}: ${LIBFT} ${GNL} ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} ${GNL} ${LIBFT} -o ${NAME}
+
+${LIBFT}:
 	make -C ${LIBFT_DIR}
 
-${GNL}:				
+${GNL}: ${LIBFT}
 	make -C ${GNL_DIR}
 
 %.o: %.c ${HEADER}
@@ -42,6 +41,6 @@ fclean: clean
 	make -C ${LIBFT_DIR} fclean
 	make -C ${GNL_DIR} fclean
 
-re:    fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

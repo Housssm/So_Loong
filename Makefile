@@ -1,5 +1,9 @@
-SRCS = main.c
-
+SRCS = \
+		main.c\
+		Parsing/parsing.c\
+		Parsing/parsing_utils.c\
+		utils.c
+		
 OBJS = ${SRCS:.c=.o}
 
 NAME = so_long

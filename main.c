@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:10:00 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/19 18:03:53 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:42:56 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_core(char *str)
 int	size_fd(int fd)
 {
 	char	*str;
-	int i;
+	int 	i;
 	
 	str = get_next_line(fd);
 	i = 1;
@@ -78,32 +78,57 @@ int	size_fd(int fd)
 	return (i);
 }
 
+// int	main(int ac, char **av)
+// {
+// 	(void)ac;
+// 	int		fd = open(av[1], O_RDONLY);
+// 	char	*str = get_next_line(fd);	
+// 	int len = size_fd(fd);
+// 	fd = open(av[1], O_RDONLY);
+// 	int j = 0;
+// 	char **tab;
+// 	tab = malloc(sizeof(char *) * (len + 1));
+// 	if (!tab)
+// 		return 1;
+// 	while (fd > 0)
+// 	{
+// 		tab[j] = ft_strdup(str);
+// 		j++;
+// 		free(str);
+// 		str = get_next_line(fd);
+// 		if (str == NULL)
+// 			break;
+// 	}
+// 	close(fd);
+// 	printf("%s\n", tab[0]);
+// 	printf("%s\n", tab[1]);
+// }
+
 int	main(int ac, char **av)
 {
+	int 			fd;
+	int				j;
+	int				len_fd;
+	char 			*str;
+	char			**tab;
+
 	(void)ac;
-	int		fd = open(av[1], O_RDONLY);
-	char	*str = get_next_line(fd);	
-	int len = size_fd(fd);
-	int j = 0;
-	char **tab;
-	tab = malloc(sizeof(char) * len + 1);
+	fd = open(av[1], O_RDONLY);
+	len_fd = size_fd(fd);
+	fd = open(av[1], O_RDONLY);
+	j = 0;
+	str = get_next_line(fd);
+	tab = malloc(sizeof(char *) * (len_fd + 1));
 	if (!tab)
-		return 0;
+		return (1);
 	while (fd > 0)
 	{
-		tab[j] = str;
+		tab[j] = ft_strdup(str);
 		j++;
 		free(str);
 		str = get_next_line(fd);
 		if (str == NULL)
 			break;
 	}
-	close(fd);
-	int i = 0 ;
-	while (str[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-	return (0);
+	tab[j] = NULL;
 }

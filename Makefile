@@ -1,6 +1,7 @@
 SRCS = \
 		main.c\
 		Parsing/parsing.c\
+		Parsing/parsing_2.c\
 		Parsing/parsing_utils.c\
 		utils.c
 		

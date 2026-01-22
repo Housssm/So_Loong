@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:59:39 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/21 19:12:04 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/22 19:59:56 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	check_core(char *str)
 	int	i;
 	int	len;
 
-	len = ft_strlen(str) - 1; // -1 car 000111  + '\0';
+	len = ft_strlen(str) - 1;
 	i = 1;
 	if (!str)
 		return (0);

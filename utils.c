@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 21:01:26 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/20 21:01:50 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/22 20:00:24 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 size_t	ft_lentab(char **tab)
 {
 	size_t	i;
-	
+
 	i = 0;
-	while(tab[i])
+	while (tab[i])
 		i++;
 	return (i);
 }

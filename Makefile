@@ -3,6 +3,7 @@ SRCS = \
 		Parsing/parsing.c\
 		Parsing/parsing_2.c\
 		Parsing/parsing_utils.c\
+		Parsing/flood_fill.c\
 		utils.c
 		
 OBJS = ${SRCS:.c=.o}

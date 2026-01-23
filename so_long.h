@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/22 20:05:51 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:31:33 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "libft/libft.h"
 #include "GNL/get_next_line.h"
+#include "mlx.h"
 
 typedef	struct s_game
 {
@@ -28,6 +29,14 @@ typedef	struct s_game
 	int		recheable;
 	
 }t_game;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_map
 {

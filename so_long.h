@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/23 16:31:33 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:19:18 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 #include "GNL/get_next_line.h"
 #include "mlx.h"
 
+
+
+#  define WIND_NAME "So-long"
+#  define CLOSE_MOUSE 17
+#  define BITS_SIZE 64
+#  define DIM_X 750
+#  define DIM_Y 400
+
 typedef	struct s_game
 {
 	int		pos_x;
@@ -26,24 +34,42 @@ typedef	struct s_game
 	int		row;
 	int		cols;
 	int		items;
-	int		recheable;
+	int		collected;
+	int		exit_open;
+	char	**map;
 	
 }t_game;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-typedef struct s_map
+typedef struct s_images
 {
-	char	**tab;
-	char		**recheable;
-	
-}t_map;
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*colectibles;
+	void	*first_exit;
+	void	*exit;
+}t_images;
+
+typedef struct	s_data {
+	void	*mlx;
+	void	*win;
+	void	*img;
+	void	*wall;
+	void	*colectible;
+	void	*player;
+	void	*exit;
+	void	*floor;
+	int		w;
+	int		h;
+	t_images	images;
+}t_data;
+
+typedef struct s_all
+{
+	t_game	*game;	
+	t_data	*data;	
+}t_all;
+
 
 
 //Parsing
@@ -73,5 +99,6 @@ void	free_tab(char **tab);
 char	**copy_tab(char **tab);
 size_t	ft_lentab(char **tab);
 char	*ft_strrdup(const char *str, char c);
+void	remove_newline(char **tab);
 
 #endif

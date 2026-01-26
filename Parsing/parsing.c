@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/22 20:36:08 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:24:11 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@ char	**extract_map(char **av)
 	int				j;
 	int				len_fd;
 	char			**tab;
-	char			**result;
 
 	fd = open(av[1], O_RDONLY);
 	len_fd = size_fd(fd);
 	fd = open(av[1], O_RDONLY);
 	j = 0;
-	result = ((tab = malloc(sizeof(char *) * (len_fd + 1))));
-	if (!tab || !result)
-		return (free_tab(tab), free_tab(result), NULL);
+	tab = malloc(sizeof(char *) * (len_fd + 1));
+	if (!tab)
+		return (free_tab(tab), NULL);
 	while (1)
 	{
 		tab[j] = get_next_line(fd);
@@ -35,9 +34,8 @@ char	**extract_map(char **av)
 		j++;
 	}
 	tab[j] = NULL;
-	result = copy_tab(tab);
-	free_tab(tab);
-	return (result);
+	remove_newline(tab);
+	return (tab);
 }
 
 void	struct_atribution(char **tab, t_game *game)

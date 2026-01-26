@@ -30,33 +30,33 @@ MLX_FLAGS = -L${MLX_DIR} -lmlx -lXext -lX11 -lm
 all: ${NAME}
 
 ${NAME}: ${LIBFT} ${GNL} ${MLX} ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} ${GNL} ${LIBFT} ${MLX_FLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} ${GNL} ${LIBFT} ${MLX_FLAGS} -o ${NAME}
 
 ${LIBFT}:
-	make -C ${LIBFT_DIR}
+	@make -sC ${LIBFT_DIR}
 
 ${GNL}: ${LIBFT}
-	make -C ${GNL_DIR}
+	@make -sC ${GNL_DIR}
 
 ${MLX}:
-	make -C ${MLX_DIR}
+	@make -sC ${MLX_DIR}
 
 %.o: %.c ${HEADER}
-	${CC} ${CFLAGS} -I${LIBFT_DIR} -I${GNL_DIR} -I${MLX_DIR} -c $< -o $@
+	@${CC} ${CFLAGS} -I${LIBFT_DIR} -I${GNL_DIR} -I${MLX_DIR} -c $< -o $@
 
 
 clean:
-	rm -f ${OBJS}
-	make -C ${LIBFT_DIR} clean
-	make -C ${GNL_DIR} clean
-	make -C ${MLX_DIR} clean
+	@rm -f ${OBJS}
+	@make -sC ${LIBFT_DIR} clean
+	@make -sC ${GNL_DIR} clean
+	@make -sC ${MLX_DIR} clean
 
 fclean: clean
-	rm -f ${NAME}
-	rm -f a.out
-	make -C ${LIBFT_DIR} fclean
-	make -C ${GNL_DIR} fclean
-	make -C ${GNL_DIR} fclean
+	@rm -f ${NAME}
+	@rm -f a.out
+	@make -sC ${LIBFT_DIR} fclean
+	@make -sC ${GNL_DIR} fclean
+	@make -sC ${GNL_DIR} fclean
 
 re: fclean all
 

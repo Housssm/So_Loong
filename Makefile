@@ -1,12 +1,12 @@
 SRCS = \
-		main.c\
-		Parsing/parsing.c\
-		Parsing/parsing_2.c\
-		Parsing/parsing_utils.c\
-		Parsing/flood_fill.c\
-		Game/window_management.c\
-		Game/game_cleaning.c\
-		utils.c
+		Src/main.c\
+		Src/parsing.c\
+		Src/parsing_2.c\
+		Src/parsing_utils.c\
+		Src/flood_fill.c\
+		Src/window_management.c\
+		Src/game_cleaning.c\
+		Src/utils.c
 		
 OBJS = ${SRCS:.c=.o}
 

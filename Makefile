@@ -4,6 +4,8 @@ SRCS = \
 		Parsing/parsing_2.c\
 		Parsing/parsing_utils.c\
 		Parsing/flood_fill.c\
+		Game/window_management.c\
+		Game/game_cleaning.c\
 		utils.c
 		
 OBJS = ${SRCS:.c=.o}

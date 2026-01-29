@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/26 17:19:18 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/29 10:52:01 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 #  define BITS_SIZE 64
 #  define DIM_X 750
 #  define DIM_Y 400
+#  define IMG_WALL "Images/wall_bank.xpm"
+#  define IMG_FLOOR "Images/floor_bank.xpm"
+#  define IMG_COLL "Images/biff.xpm"
+#  define IMG_PLAYER "Images/Robber_beg.xpm"
+#  define IMG_EXIT "Images/exit.xpm"
+
+
 
 typedef	struct s_game
 {
@@ -90,10 +97,17 @@ void	flood_file_check(char **copy_map, int x, int y);
 int	check_map_format(char *av);
 void	write_error(int	i);
 
+//Game
+int	wind_creation(t_data	*data, t_game *game);
+int	file_to_img(t_data	*data);
+void	fill_display(t_all *all, size_t i, size_t j);
+int	display_all(t_all *all);
 
 
 //Cleaning
 void	free_tab(char **tab);
+int	close_wind(t_all *all);
+int	delete_all_image(t_data *data);
 
 // Utils
 char	**copy_tab(char **tab);

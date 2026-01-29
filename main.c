@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:10:00 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/26 18:32:57 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/29 10:08:00 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	display_all(t_data *data,t_game *game)
 	int	j;
 
 	i = 0;
-	file_to_img(data);
-		//free ce que wind a creee
-	
+	if (file_to_img(data))
+		return (1);
+		
 	while(game->map[i])
 	{
 		j = 0;
@@ -130,8 +130,8 @@ int main(int ac , char **av)
 	t_data		data;
 	t_all		all;
 
-	
-	// game = (t_game *)malloc(sizeof(t_game));
+	all.data = &data;
+	all.game = &game;
 	game.map = extract_map(av);
 	struct_atribution(game.map, &game);
 	if (check_all(game.map, &game, av[1])) // Je free ici en cas derreur 

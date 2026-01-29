@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 21:49:16 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/29 22:29:04 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	struct_atribution(char **tab, t_all *all)
 	all->game->exit = check_count(tab, 'E');
 	all->game->items = check_count(tab, 'C');
 	all->game->collec_missing = all->game->items;
+	all->data->nb_mouv = 0;
 	all->data->player = NULL;
 	all->data->player_med = NULL;
 	all->data->player_end = NULL;
@@ -60,7 +61,6 @@ void	struct_atribution(char **tab, t_all *all)
 
 int	first_check(char **tab)
 {
-	
 	if (check_len_map(tab))
 		return (free_tab(tab), write_error(2), 1);
 	if (check_characters(tab))

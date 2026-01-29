@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 10:28:38 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 21:52:49 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/29 22:41:42 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	display_all(t_all *all)
 {
 	size_t	i;
 	size_t	j;
-
+	
 	i = 0;
 	if (file_to_img(all->data))
 		return (close_wind(all), 1);
@@ -126,5 +126,6 @@ int	display_all(t_all *all)
 		}
 		i++;
 	}
+	display_mouv(all);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 21:50:14 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/01/29 22:40:58 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_data {
 	void	*danger;
 	int		w;
 	int		h;
-	// t_images	images;
+	int		nb_mouv;
 }t_data;
 
 typedef struct s_all
@@ -117,6 +117,8 @@ int	wind_creation(t_all *all);
 int	file_to_img(t_data	*data);
 int	fill_display(t_all *all, size_t i, size_t j);
 int	display_all(t_all *all);
+void	display_mouv(t_all *all);
+
 
 
 //Cleaning

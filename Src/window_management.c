@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 10:28:38 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 11:07:15 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:37:32 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	file_to_img(t_data	*data)
 	data->danger = mlx_xpm_file_to_image(data->mlx, IMG_DANG,
 			&data->w, &data->h);
 	if (!data->wall || !data->floor || !data->colectible
-		|| !data->player || !data->exit
+		|| !data->player || data->player || !data->exit
 		|| !data->player_med || !data->player_end)
 	{
 		ft_putstr_fd("Error\nImage loading failed\n", 2);

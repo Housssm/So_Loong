@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 19:13:18 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 21:49:10 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:39:26 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	check_map_format(char *av)
 	int	i;
 
 	i = ft_strlen(av);
-	if (av[i - 1] == 'r' && av[i - 2] == 'e' && av[i - 3] == 'b')
+	if (av[i - 1] == 'r' && av[i - 2] == 'e' && av[i - 3] == 'b'
+		&& av[i - 4] == '.')
 		return (1);
 	return (0);
 }

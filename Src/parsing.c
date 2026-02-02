@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 13:55:13 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:39:09 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	**extract_map(char **av)
 	char			**tab;
 
 	fd = open(av[1], O_RDONLY);
-	if ( fd < 0)
-		return (ft_putstr_fd("Check Rights\n", 1),NULL);
+	if (fd < 0)
+		return (ft_putstr_fd("Check Rights\n", 1), NULL);
 	len_fd = size_fd(fd);
 	fd = open(av[1], O_RDONLY);
 	j = 0;
@@ -35,6 +35,7 @@ char	**extract_map(char **av)
 			break ;
 		j++;
 	}
+	close(fd);
 	tab[j] = NULL;
 	remove_newline(tab);
 	return (tab);

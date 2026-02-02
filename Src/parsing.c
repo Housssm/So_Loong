@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 22:29:04 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:23:34 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	struct_atribution(char **tab, t_all *all)
 	all->data->player_med = NULL;
 	all->data->player_end = NULL;
 	all->data->floor = NULL;
-	all->data->wall= NULL;
+	all->data->wall = NULL;
 	all->data->floor = NULL;
 	all->data->exit = NULL;
 	all->data->danger = NULL;
@@ -67,7 +67,6 @@ int	first_check(char **tab)
 		return (free_tab(tab), write_error(3), 3);
 	return (0);
 }
-
 
 int	check_all(char **tab, t_all *all)
 {
@@ -102,24 +101,4 @@ void	find_pos_player(char **tab, t_all *all)
 		}
 		i++;
 	}
-}
-
-int	check_characters(char **tab)
-{
-	size_t	i;
-	size_t	lentab;
-
-	i = 1;
-	lentab = ft_lentab(tab);
-	if (is_one(tab[0]))
-		return (1);
-	while (i < lentab)
-	{
-		if (check_core(tab[i]))
-			return (1);
-		i++;
-	}
-	if (is_one(tab[lentab]))
-		return (1);
-	return (0);
 }

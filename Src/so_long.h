@@ -6,43 +6,39 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 22:40:58 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:27:44 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../libft/libft.h"
-#include "../GNL/get_next_line.h"
-#include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
+# include "../GNL/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
 
+# define WIND_NAME "So-long"
+# define CLOSE_MOUSE 17
+# define BITS_SIZE 64
+# define DIM_X 750
+# define DIM_Y 400
+# define IMG_WALL "Images/wall_bank.xpm"
+# define IMG_FLOOR "Images/floor_bank.xpm"
+# define IMG_COLL "Images/money.xpm"
+# define IMG_PLAYER "Images/Robber_beg.xpm"
+# define IMG_PLAYER2 "Images/Robber_med.xpm"
+# define IMG_PLAYER3 "Images/Robber_end.xpm"
+# define IMG_EXIT "Images/exit.xpm"
+# define IMG_DANG "Images/police.xpm"
+# define MAX_WIDTH 1280
+# define MAX_HEIGHT 720
+# define ESC 65307
+# define RIGHT 100
+# define LEFT 97
+# define UP 119
+# define DOWN 115
 
-
-#  define WIND_NAME "So-long"
-#  define CLOSE_MOUSE 17
-#  define BITS_SIZE 64
-#  define DIM_X 750
-#  define DIM_Y 400
-#  define IMG_WALL "Images/wall_bank.xpm"
-#  define IMG_FLOOR "Images/floor_bank.xpm"
-#  define IMG_COLL "Images/money.xpm"
-#  define IMG_PLAYER "Images/Robber_beg.xpm"
-#  define IMG_PLAYER2 "Images/Robber_med.xpm"
-#  define IMG_PLAYER3 "Images/Robber_end.xpm"
-#  define IMG_EXIT "Images/exit.xpm"
-#  define IMG_DANG "Images/police.xpm"
-#  define MAX_WIDTH 1280
-#  define MAX_HEIGHT 720
-#  define ESC 65307
-#  define RIGHT 100
-#  define LEFT 97
-#  define UP 119
-#  define DOWN 115
-
-
-
-typedef	struct s_game
+typedef struct s_game
 {
 	int		player;
 	int		exit;
@@ -55,17 +51,7 @@ typedef	struct s_game
 	char	**map;
 }t_game;
 
-// typedef struct s_images
-// {
-// 	void	*wall;
-// 	void	*floor;
-// 	void	*player;
-// 	void	*colectibles;
-// 	void	*first_exit;
-// 	void	*exit;
-// }t_images;
-
-typedef struct	s_data {
+typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -91,7 +77,6 @@ typedef struct s_all
 	t_data	*data;	
 }t_all;
 
-
 //Parsing
 char	**extract_map(char **av);
 int		check_all(char **tab, t_all *all);
@@ -107,24 +92,23 @@ void	struct_atribution(char **tab, t_all *all);
 int		flood_fill(char **tab, t_all *all);
 int		flood_invalid(char **tab);
 void	flood_file_check(char **copy_map, int x, int y);
-int	check_map_format(char *av);
-void	write_error(int	i);
-int	first_check(char **tab);
-
+int		check_map_format(char *av);
+void	write_error(int i);
+int		first_check(char **tab);
 
 //Game
-int	wind_creation(t_all *all);
-int	file_to_img(t_data	*data);
-int	fill_display(t_all *all, size_t i, size_t j);
-int	display_all(t_all *all);
+int		wind_creation(t_all *all);
+int		file_to_img(t_data	*data);
+int		fill_display(t_all *all, size_t i, size_t j);
+int		display_all(t_all *all);
 void	display_mouv(t_all *all);
-
-
+int		player_mouvement(t_all *all, int x, int y);
+int		key_pressed(int touch, t_all *all);
 
 //Cleaning
 void	free_tab(char **tab);
-int	close_wind(t_all *all);
-int	delete_all_image(t_data *data);
+int		close_wind(t_all *all);
+int		delete_all_image(t_data *data);
 
 // Utils
 char	**copy_tab(char **tab);

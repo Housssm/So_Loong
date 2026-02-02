@@ -6,100 +6,33 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:10:00 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 22:42:14 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:22:00 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void	display_mouv(t_all *all)
+int	main(int ac, char **av)
 {
-	char	*mouv;
-
-	mouv = ft_itoa(all->data->nb_mouv);
-	if (!mouv)
-		return ;
-	mlx_string_put(all->data->mlx, all->data->win, 10, 20, 0xFFFFFF, "Items left: ");
-	mlx_string_put(all->data->mlx, all->data->win, 100, 20, 0xFFFFFF, mouv);
-	free(mouv);
-}
-
-int	player_mouvement(t_all *all, int x, int y)
-{
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = all->data->pos_x;
-	pos_y = all->data->pos_y;
-	if ( all->game->map[pos_y + y][pos_x + x] != '1')
-	{
-		if (all->game->map[pos_y + y][pos_x + x] == 'C')
-			all->game->collec_missing -= 1;
-		else if (all->game->map[pos_y + y][pos_x + x] == 'E' && all->game->collec_missing == 0)
-			return (1);
-		else if (all->game->map[pos_y + y][pos_x + x] == 'D')
-			return (404);
-		all->game->map[pos_y + y][pos_x + x] = 'P';
-		all->game->map[pos_y][pos_x] = '0';
-		all->data->pos_x += x;
-		all->data->pos_y += y;
-		all->data->nb_mouv += 1;
-	}
-	delete_all_image(all->data);
-	display_all(all);
-	return (0);
-}
-
-int	key_pressed(int	touch, t_all *all)
-{
-	int win;
-	int	count;
-	
-	win = 0;
-	count = 0;
-	if ( touch == ESC)
-		close_wind(all);
-	else if ( touch == RIGHT)
-		win = player_mouvement(all, 1, 0);
-	else if ( touch == LEFT)
-		win = player_mouvement(all, -1, 0);
-	else if ( touch == UP)
-		win = player_mouvement(all, 0, -1);
-	else if ( touch == DOWN)
-		win = player_mouvement(all, 0, 1);
-	if ( win == 1 || win == 404)
-	{
-		if ( win == 1)
-			ft_putstr_fd("Victory\n", 1);
-		else if ( win == 404)
-			ft_putstr_fd("You've been caught.", 1);
-		close_wind(all);
-	}
-	return (0);
-}
-
-int main(int ac , char **av)
-{
-	if (ac == 1 || !av[1] || av[1][0] == 0 || !check_map_format(av[1]))
-		return (ft_putstr_fd("Missing Map\n", 1), 1);
 	t_game		game;
 	t_data		data;
 	t_all		all;
 
+	if (ac == 1 || !av[1] || av[1][0] == 0 || !check_map_format(av[1]))
+		return (ft_putstr_fd("Missing Map\n", 1), 1);
 	all.data = &data;
 	all.game = &game;
 	game.map = extract_map(av);
 	if (first_check(game.map))
 		return (1);
 	struct_atribution(game.map, &all);
-	if (check_all(all.game->map, &all)) // Je free ici en cas derreur 
+	if (check_all(all.game->map, &all))
 		return (1);
-	if(wind_creation(&all))
-		return (1);	
+	if (wind_creation(&all))
+		return (1);
 	if (display_all(&all))
 		return (1);
-	mlx_hook(all.data->win, 2, 1L<<0, key_pressed, &all);
+	mlx_hook(all.data->win, 2, 1L << 0, key_pressed, &all);
 	mlx_hook((&data)->win, CLOSE_MOUSE, 0, close_wind, &all);
 	mlx_loop((&data)->mlx);
 	return (0);

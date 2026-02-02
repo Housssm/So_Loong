@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 10:28:38 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 22:41:42 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:17:28 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int	wind_creation(t_all *all)
 	height = all->game->row * BITS_SIZE;
 	all->data->mlx = mlx_init();
 	if (!all->data->mlx)
- 	{
-        ft_putstr_fd("Error\nMLX init failed\n", 2);
-        free_tab(all->game->map);
-        exit(1);  // Ne pas appeler close_wind car mlx est NULL
-    }
+	{
+		ft_putstr_fd("Error\nMLX init failed\n", 2);
+		free_tab(all->game->map);
+		exit(1);
+	}
 	all->data->win = mlx_new_window(all->data->mlx, width, height, WIND_NAME);
 	if (!all->data->win)
 	{
 		mlx_destroy_display(all->data->mlx);
 		free(all->data->mlx);
 		free_tab(all->game->map);
-		return (/*close_wind(all),*/ 1);
+		return (1);
 	}
 	return (0);
 }
@@ -51,9 +51,11 @@ int	file_to_img(t_data	*data)
 	data->player_end = mlx_xpm_file_to_image(data->mlx,
 			IMG_PLAYER3, &data->w, &data->h);
 	data->exit = mlx_xpm_file_to_image(data->mlx, IMG_EXIT, &data->w, &data->h);
-	data->danger = mlx_xpm_file_to_image(data->mlx, IMG_DANG, &data->w, &data->h);
+	data->danger = mlx_xpm_file_to_image(data->mlx, IMG_DANG,
+			&data->w, &data->h);
 	if (!data->wall || !data->floor || !data->colectible
-		|| !data->player || !data->exit || !data->player_med || !data->player_end)
+		|| !data->player || !data->exit
+		|| !data->player_med || !data->player_end)
 	{
 		ft_putstr_fd("Error\nImage loading failed\n", 2);
 		return (1);
@@ -61,22 +63,21 @@ int	file_to_img(t_data	*data)
 	return (0);
 }
 
-
 int	which_player(t_all *all, size_t i, size_t j)
 {
-	int check;
+	int	check;
 
 	check = 0;
-	if ( all->game->collec_missing == all->game->items)
+	if (all->game->collec_missing == all->game->items)
 		check = mlx_put_image_to_window(all->data->mlx, all->data->win,
 				all->data->player, j * BITS_SIZE, i * BITS_SIZE);
-	else if ( all->game->collec_missing >= (2 * all->game->items) / 3)
+	else if (all->game->collec_missing >= (2 * all->game->items) / 3)
 		check = mlx_put_image_to_window(all->data->mlx, all->data->win,
 				all->data->player_med, j * BITS_SIZE, i * BITS_SIZE);
-	else /* if (all->game->collec_missing  <= (all->game->items) / 3) */
+	else
 		check = mlx_put_image_to_window(all->data->mlx, all->data->win,
 				all->data->player_end, j * BITS_SIZE, i * BITS_SIZE);
-	return(0);
+	return (0);
 }
 
 int	fill_display(t_all *all, size_t i, size_t j)
@@ -95,7 +96,7 @@ int	fill_display(t_all *all, size_t i, size_t j)
 		check = mlx_put_image_to_window(all->data->mlx, all->data->win,
 				all->data->colectible, j * BITS_SIZE, i * BITS_SIZE);
 	else if (all->game->map[i][j] == 'P')
-			check = which_player(all,i,j);
+			check = which_player(all, i, j);
 	else if (all->game->map[i][j] == 'E' && (all->game->collec_missing == 0))
 		check = mlx_put_image_to_window(all->data->mlx, all->data->win,
 				all->data->exit, j * BITS_SIZE, i * BITS_SIZE);
@@ -111,7 +112,7 @@ int	display_all(t_all *all)
 {
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	if (file_to_img(all->data))
 		return (close_wind(all), 1);
@@ -121,7 +122,7 @@ int	display_all(t_all *all)
 		while (all->game->map[i][j])
 		{
 			if (fill_display(all, i, j))
-				return (close_wind(all), 1);			
+				return (close_wind(all), 1);
 			j++;
 		}
 		i++;

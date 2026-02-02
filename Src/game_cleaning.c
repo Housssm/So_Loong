@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 10:32:08 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 22:41:28 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:24:12 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int	delete_all_image(t_data *data)
 int	close_wind(t_all *all)
 {
 	delete_all_image(all->data);
-	if ( all->data->win)
+	if (all->data->win)
 		mlx_destroy_window(all->data->mlx, all->data->win);
-	if ( all->data->mlx)
+	if (all->data->mlx)
 	{
 		mlx_destroy_display(all->data->mlx);
 		free(all->data->mlx);
 	}
-	if ( all->game->map)
+	if (all->game->map)
 		free_tab(all->game->map);
 	exit(0);
 	return (0);

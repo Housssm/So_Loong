@@ -6,6 +6,7 @@ SRCS = \
 		Src/flood_fill.c\
 		Src/window_management.c\
 		Src/game_cleaning.c\
+		Src/mouvements.c\
 		Src/utils.c
 		
 OBJS = ${SRCS:.c=.o}

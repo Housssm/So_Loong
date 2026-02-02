@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:23:34 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:37:51 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	check_all(char **tab, t_all *all)
 		return (free_tab(tab), write_error(4), 3);
 	if (flood_fill(tab, all))
 		return (free_tab(tab), write_error(5), 3);
+	if (all->game->cols > 40 || all->game->row > 22)
+		return (free_tab(tab), write_error(6), 3);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 19:19:15 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/01/29 21:48:59 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 08:37:21 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,6 @@ void	write_error(int i)
 		ft_putstr_fd("Error: Check number of variable\n", 1);
 	if (i == 5)
 		ft_putstr_fd("Error : Unreachable item\n", 1);
+	if (i == 6)
+		ft_putstr_fd("Error : Try smaller map\n", 1);
 }

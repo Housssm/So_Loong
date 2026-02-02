@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:10:00 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:38:04 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:19:10 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int ac, char **av)
 	all.data = &data;
 	all.game = &game;
 	game.map = extract_map(av);
+	if (!game.map)
+		return (1);
 	if (first_check(game.map))
 		return (1);
 	struct_atribution(game.map, &all);

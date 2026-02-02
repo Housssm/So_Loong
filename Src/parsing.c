@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:56:45 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:37:51 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 13:55:13 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	**extract_map(char **av)
 	char			**tab;
 
 	fd = open(av[1], O_RDONLY);
+	if ( fd < 0)
+		return (ft_putstr_fd("Check Rights\n", 1),NULL);
 	len_fd = size_fd(fd);
 	fd = open(av[1], O_RDONLY);
 	j = 0;
@@ -56,7 +58,8 @@ void	struct_atribution(char **tab, t_all *all)
 	all->data->exit = NULL;
 	all->data->danger = NULL;
 	all->data->colectible = NULL;
-	find_pos_player(tab, all);
+	find_pos(tab, 'E', &all->data->pos_ex_x, &all->data->pos_ex_y);
+	find_pos(tab, 'P', &all->data->pos_x, &all->data->pos_y);
 }
 
 int	first_check(char **tab)
@@ -83,7 +86,7 @@ int	check_all(char **tab, t_all *all)
 	return (0);
 }
 
-void	find_pos_player(char **tab, t_all *all)
+void	find_pos(char **tab, char c, int *x, int *y)
 {
 	size_t	i;
 	int		j;	
@@ -94,10 +97,10 @@ void	find_pos_player(char **tab, t_all *all)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] == 'P')
+			if (tab[i][j] == c)
 			{
-					all->data->pos_x = j;
-					all->data->pos_y = i;
+					*x = j;
+					*y = i;
 			}
 			j++;
 		}

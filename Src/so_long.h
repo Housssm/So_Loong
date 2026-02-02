@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:08:11 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:27:44 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:08:12 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_data {
 	void	*colectible;
 	int		pos_x;
 	int		pos_y;
+	int		pos_ex_x;
+	int		pos_ex_y;
 	int		tile_size;
 	void	*player;
 	void	*player_med;
@@ -95,6 +97,7 @@ void	flood_file_check(char **copy_map, int x, int y);
 int		check_map_format(char *av);
 void	write_error(int i);
 int		first_check(char **tab);
+void	find_pos(char **tab, char c, int *x, int *y);
 
 //Game
 int		wind_creation(t_all *all);
@@ -104,6 +107,7 @@ int		display_all(t_all *all);
 void	display_mouv(t_all *all);
 int		player_mouvement(t_all *all, int x, int y);
 int		key_pressed(int touch, t_all *all);
+void	bring_back_exit(t_all *all);
 
 //Cleaning
 void	free_tab(char **tab);

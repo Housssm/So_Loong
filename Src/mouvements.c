@@ -6,7 +6,7 @@
 /*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 08:09:02 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:13:41 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:08:25 by hoel-har         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ void	display_mouv(t_all *all)
 		20, 0xFFFFFF, "Items left: ");
 	mlx_string_put(all->data->mlx, all->data->win, 100, 20, 0xFFFFFF, mouv);
 	free(mouv);
+}
+
+void	bring_back_exit(t_all *all)
+{
+	int	x;
+	int	y;
+
+	y = all->data->pos_ex_y;
+	x = all->data->pos_ex_x;
+	if (all->game->collec_missing == 0)
+		all->game->map[y][x] = 'E';
 }
 
 int	player_mouvement(t_all *all, int x, int y)
@@ -46,6 +57,8 @@ int	player_mouvement(t_all *all, int x, int y)
 		all->data->pos_x += x;
 		all->data->pos_y += y;
 		all->data->nb_mouv += 1;
+		if (all->game->collec_missing == 0)
+			bring_back_exit(all);
 	}
 	delete_all_image(all->data);
 	display_all(all);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoel-har <hoel-har@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 21:01:26 by hoel-har          #+#    #+#             */
-/*   Updated: 2026/02/02 08:24:38 by hoel-har         ###   ########.fr       */
+/*   Updated: 2026/02/05 18:49:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_characters(char **tab)
 			return (1);
 		i++;
 	}
-	if (is_one(tab[lentab]))
+	if (is_one(tab[lentab - 1]))
 		return (1);
 	return (0);
 }
